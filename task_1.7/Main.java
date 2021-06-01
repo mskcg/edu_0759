@@ -8,9 +8,19 @@
 250000 */
 
 
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //Ваш код
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("длина бассейна: ");
+        int x = scanner.nextInt();
+        System.out.print("ширина бассейна: ");
+        int y = scanner.nextInt();
+        System.out.print("глубина бассейна: ");
+        int z = scanner.nextInt();
+
+        System.out.println("Потребуется литров воды: " + x*y*z*1000);
     }
 }
