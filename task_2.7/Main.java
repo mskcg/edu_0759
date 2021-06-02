@@ -4,7 +4,16 @@
 
 public class Main {
     public static void main(String[] args) {
-        //напишите тут ваш код
-
+        int number = 31;
+        int i = 2;
+        while (i < number) {
+            if (number % i == 0) {
+                System.out.println("true"); // делится
+                return;
+            }
+            else
+                i++;
+        }
+        System.out.println("false"); // не делится
     }
 }

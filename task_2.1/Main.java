@@ -13,7 +13,22 @@
 
 public class Main {
     public static void main(String[] args) {
-        //напишите тут ваш код
-
+        String [] words = {"Мама","Мыла","Раму"};
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(j != i) {
+                    for (int k = 0; k < 3; k++) {
+                        if(k != j && k != i) {
+                            String result = words[i] + words[j] + words[k];
+                            System.out.println(result);
+                        }
+                        else
+                            continue;
+                    }
+                }
+                else
+                    continue;
+            }
+        }
     }
 }

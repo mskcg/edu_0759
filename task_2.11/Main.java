@@ -4,7 +4,15 @@
 
 public class Main {
     public static void main(String[] args) {
-        //напишите тут ваш код
-
+        int [] nums = {5,2,7,8,1,9,6,3};
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if(sum > 10) {
+                System.out.println("нужно сложить первых элементов: " + (i+1));
+                return;
+            }
+        }
+        System.out.println("сумма всех элементов не больше 10");
     }
 }
