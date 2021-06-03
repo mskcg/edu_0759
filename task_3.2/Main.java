@@ -15,13 +15,17 @@
 
 public class Main {
     public static int min(int a, int b, int c, int d) {
-        //напишите тут ваш код
-
+        if (min(a,b) < min(c,d))
+            return min(a,b);
+        else
+            return min(c,d);
     }
 
     public static int min(int a, int b) {
-        //напишите тут ваш код
-
+        if (a<b)
+            return a;
+        else
+            return b;
     }
 
     public static void main(String[] args) throws Exception {

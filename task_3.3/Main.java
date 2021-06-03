@@ -5,7 +5,16 @@
 
 public class Main {
     public static void main(String[] args) {
-        //напишите тут ваш код
+        int x = 3;
+        int y = 7;
 
+        System.out.println(compare_two(x,y));
+    }
+
+    public static boolean compare_two (int a, int b) {
+        if (a==b)
+            return true;
+        else
+            return false;
     }
 }

@@ -6,7 +6,15 @@
 
 public class Main {
     public static void main(String[] args) {
-        //напишите тут ваш код
+        int x = 3;
+        int y = 7;
 
+        System.out.println(compare_sum(x, y));
+    }
+    public static boolean compare_sum(int a, int b) {
+        if (a+b > 10)
+            return true;
+        else
+            return false;
     }
 }
