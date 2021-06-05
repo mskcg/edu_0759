@@ -9,16 +9,22 @@
 •	Дополнительные классы или интерфейсы создавать нельзя.
 */
 
+import java.awt.*;
+
 public class Main {
     public static void main(String[] args){
     }
 }
 
-interface Animal {
-    Color getColor();
+// условие задачи не совсем понятно. Реализовать интерфейс Animal нужно в классе Fox, но при этом в классе fox только один метод getName?
+
+abstract interface Animal {
+    default Color getColor() {
+        return Color.WHITE;
+    };
 }
     
-class Fox {
+class Fox implements Animal {
     public String getName() {
         return "Fox";
     }
