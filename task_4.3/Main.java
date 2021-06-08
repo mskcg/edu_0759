@@ -13,7 +13,6 @@
 •	Если некий кот1 выигрывает у кота кот2, то кот2 должен проигрывать коту кот1.
 */
 
-import java.lang.reflect.AnnotatedElement;
 
 public class Main {
     public static void main(String[] args) {

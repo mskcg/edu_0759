@@ -1,8 +1,6 @@
 /*
 Реализуй в классе Fox интерфейс Animal.
-Поменяй код так, чтобы в классе Fox был только один метод - getName.
 Учти, что создавать дополнительные классы и удалять методы нельзя!
-
 Требования:
 •	Интерфейс Animal должен быть реализован в классе Fox.
 •	В интерфейсе Animal нужно объявить метод getColor.
@@ -16,16 +14,15 @@ public class Main {
     }
 }
 
-// условие задачи не совсем понятно. Реализовать интерфейс Animal нужно в классе Fox, но при этом в классе fox только один метод getName?
-
-abstract interface Animal {
-    default Color getColor() {
-        return Color.WHITE;
-    };
+interface Animal {
+    Color getColor();
 }
-    
+
 class Fox implements Animal {
     public String getName() {
         return "Fox";
     }
+    public Color getColor() {
+        return Color.WHITE;
+    };
 }

@@ -23,7 +23,7 @@ public class Main {
         Mouse muscleMouse = new Mouse("Muscle", 12, 5);
         Cat butchCat = new Cat("Butch", "black", false);
         Cat tomCat = new Cat("Tom", "gray", true);
-        Cat pussyCat = new Cat("PussyCat". "white", true);
+        Cat pussyCat = new Cat("PussyCat", "white", true);
         Dog spikeDog = new Dog("Spike", "bulldog", 12);
     }
 }
