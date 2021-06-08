@@ -57,8 +57,8 @@ public class Main {
                 hotel.showRoom(roomNumber);
             }else if(command.equals("ShowBedsRooms")) {
                 System.out.println("Для скольких человек нужна комната (1-3): ");
-                byte quantity = scanner.nextByte();
-                hotel.showQuantityRooms(quantity);
+                byte beds = scanner.nextByte();
+                hotel.ShowBedsRooms(beds);
             }else if (command.equals("Help") || command.equals("help")){
                 System.out.println("Доступные команды: ShowRooms, ShowRoom, ShowFreeRooms, ShowRoomsWC, ShowRoomsEat, ShowRoomsWF, ReserveRoom, ReleaseRoom, ShowBedsRooms, Help, Exit");}
             else if (command.equals("Exit") || command.equals("exit")){break;}

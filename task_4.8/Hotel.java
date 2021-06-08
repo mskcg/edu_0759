@@ -93,7 +93,7 @@ public class Hotel {
         System.out.println(info);
     }
 
-    public void showQuantityRooms(byte beds) {
+    public void ShowBedsRooms(byte beds) {
         if (beds>3 || beds<1) {
             System.out.println("Неверный ввод. Доступные варианты: 1,2,3");
             return;
