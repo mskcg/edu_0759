@@ -35,12 +35,13 @@ public class Main {
             list.add(family);
         }
 
-        // Read the house number
-        int houseNumber = scanner.nextInt();
-
-        if (0 <= houseNumber && houseNumber < list.size()) {
-            String familyName = list.get(houseNumber);
+        // Прочитать название города
+        System.out.print("Введите город: ");
+        String city = scanner.nextLine();
+        int cityIndex = list.indexOf(city);
+        if(cityIndex != -1) {
+            String familyName = list.get(cityIndex+1);
             System.out.println(familyName);
-        }
+        }else {System.out.println("Город не найден!");}
     }
 }
