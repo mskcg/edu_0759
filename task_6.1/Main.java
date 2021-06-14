@@ -27,17 +27,16 @@ public class Main {
                     proxy += ":";
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException  e) {
+            System.out.println("Файл не найден!");
         }
         // запись valid_proxy_list в файл
         try {
             FileOutputStream fos = new FileOutputStream("D://good_ip.txt", true);
-            //String text = "Hello";
-            //byte[] buffer = text.getBytes();
             fos.write(valid_proxy_list.toString().getBytes(StandardCharsets.UTF_8));
+            fos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Сохранить файл не удалось");
         }
     }
 
