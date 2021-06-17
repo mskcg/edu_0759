@@ -8,6 +8,10 @@ import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 
 public class Main {
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_RED = "\u001B[31m";
+
     public static void main(String[] args) {
         try {
             FileInputStream fis = new FileInputStream("D://ip.txt");
@@ -33,14 +37,14 @@ public class Main {
                                 while ((i=reader.read()) != -1){
                                     result.append((char)i);
                                 }
-                                System.out.println(result);
-                                String goodProxy = ip+":"+port+"\n";
+                                System.out.println(ip+":"+port+ANSI_GREEN+" работает"+ANSI_RESET);
                                 // добавим найденный адрес в файл
+                                String goodProxy = ip+":"+port+"\n";
                                 FileOutputStream fos = new FileOutputStream("D://good_ip.txt", true);
                                 fos.write(goodProxy.getBytes(StandardCharsets.UTF_8));
                                 fos.close();
                             } catch (IOException exception) {
-                                System.out.println(ip+" - не работает!");
+                                System.out.println("IP: "+ip+":"+port+ANSI_RED+" не работает"+ANSI_RESET);
                             }
                         }
                     });
