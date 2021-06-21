@@ -9,7 +9,8 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) {
         try {
-            Socket socket = new Socket("127.0.0.1",8188); // Создаём сокет, для подключения к серверу
+            //Socket socket = new Socket("127.0.0.1",8188); // Создаём сокет, для подключения к серверу
+            Socket socket = new Socket("45.141.79.138",8188);
             System.out.println("Успешно подключен");
             DataOutputStream out = new DataOutputStream(socket.getOutputStream());
             DataInputStream in = new DataInputStream(socket.getInputStream());

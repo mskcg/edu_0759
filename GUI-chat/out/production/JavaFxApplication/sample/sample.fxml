@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox prefHeight="400.0" prefWidth="400" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <TextArea fx:id="userListTextArea" editable="false" prefHeight="300" prefWidth="125" style="-fx-border-width: 10px; -fx-background-color: black;" />
+   <VBox alignment="center" prefHeight="300" prefWidth="275">
+      <children>
+         <TextArea fx:id="textArea" editable="false" prefHeight="350.0" prefWidth="275.0">
+            <font>
+               <Font size="18.0" />
+            </font>
+         </TextArea>
+         <HBox prefHeight="25" prefWidth="300">
+            <children>
+               <TextField fx:id="textField" onAction="#send" prefWidth="225">
+                  <font>
+                     <Font size="18.0" />
+                  </font></TextField>
+               <Button mnemonicParsing="false" onAction="#send" prefHeight="39.0" prefWidth="110.0" style="-fx-background-color: blue;" text="Отправить" textAlignment="CENTER" textFill="WHITE" underline="true" />
+            </children>
+         </HBox>
+         <Button fx:id="connectBtn" onAction="#connect" prefHeight="25" prefWidth="Infinity" text="Подключиться" />
+      </children>
+   </VBox>
+</HBox>
