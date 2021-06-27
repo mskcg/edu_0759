@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Quizzz</string>
+    <string name="yes_btn">Да</string>
+    <string name="no_btn">Нет</string>
+    <string name="correct">Правильно</string>
+    <string name="incorrect">Неправильно</string>
+    <string name="question">2+2=4</string>
+    <string name="question1">Москва - столица России</string>
+    <string name="question2">Летом идёт снег</string>
+    <string name="question3">в году 10 месяцев</string>
+    <string name="question4">Пекин - столица Китая</string>
+</resources>
