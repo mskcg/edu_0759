@@ -4,9 +4,15 @@
     <string name="no_btn">Нет</string>
     <string name="correct">Правильно</string>
     <string name="incorrect">Неправильно</string>
-    <string name="question">2+2=4</string>
+    <string name="show_answer">Показать ответ</string>
+    <string name="question0">2+2=4</string>
     <string name="question1">Москва - столица России</string>
-    <string name="question2">Летом идёт снег</string>
+    <string name="question2">Курица мяукает</string>
     <string name="question3">в году 10 месяцев</string>
-    <string name="question4">Пекин - столица Китая</string>
+    <string name="question4">Солнце больше Земли</string>
+    <string name="question5">Арбуз это ягода</string>
+    <string name="question6">Фламинго живут в Антарктиде</string>
+    <string name="question7">У котов 4 лапы</string>
+    <string name="question8">iPhone работают под управлением andriod</string>
+    <string name="question9">В байте 8 бит</string>
 </resources>
