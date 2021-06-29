@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             questionIndex = savedInstanceState.getInt("question");
+            score = savedInstanceState.getInt("score");
+            answers = savedInstanceState.getStringArray("answers");
         }
 
         questionTextView = findViewById(R.id.questionTextView);
@@ -49,47 +51,13 @@ public class MainActivity extends AppCompatActivity {
         yesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                answers[questionIndex] = getString(questions[questionIndex].getQuestion())+"? Ваш ответ: Да";
-                if(questions[questionIndex].isAnswer()){
-                    Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
-                    score++;
-                }else{
-                    Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
-                }
-
-                //questionIndex = (questionIndex + 1)%questions.length;    // зацикливание викторины
-                questionIndex++;
-                if(questionIndex == questions.length) {     // Если вопрос последний, то создаём интент
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-                    intent.putExtra("answers", answers);
-                    intent.putExtra("score", score);
-                    startActivity(intent);
-                    questionIndex = 0;
-                }
-                questionTextView.setText(questions[questionIndex].getQuestion());
+                yes_no_onClickActions(true);
             }
         });
         noBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                answers[questionIndex] = getString(questions[questionIndex].getQuestion())+"? Ваш ответ: Нет";
-                if(!questions[questionIndex].isAnswer()){
-                    Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
-                    score++;
-                }else{
-                    Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
-                }
-
-                //questionIndex = (questionIndex + 1)%questions.length;   // зацикливание викторины
-                questionIndex++;
-                if(questionIndex == questions.length) {     // Если вопрос последний, то создаём интент
-                    Intent intent = new Intent(MainActivity.this, ResultActivity.class);
-                    intent.putExtra("answers", answers);
-                    intent.putExtra("score", score);
-                    startActivity(intent);
-                    questionIndex = 0;
-                }
-                questionTextView.setText(questions[questionIndex].getQuestion());
+                yes_no_onClickActions(false);
             }
         });
         showAnswerBtn.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +68,26 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void yes_no_onClickActions(boolean yes) {
+        answers[questionIndex] = getString(questions[questionIndex].getQuestion())+"? Ваш ответ: "+(yes?"Да":"Нет");
+        if(!questions[questionIndex].isAnswer()){
+            Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
+            score++;
+        }else{
+            Toast.makeText(MainActivity.this, R.string.incorrect, Toast.LENGTH_SHORT).show();
+        }
+        //questionIndex = (questionIndex + 1)%questions.length;   // зацикливание викторины
+        questionIndex++;
+        if(questionIndex == questions.length) {     // Если вопрос последний, то создаём интент
+            Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+            intent.putExtra("answers", answers);
+            intent.putExtra("score", score);
+            startActivity(intent);
+            questionIndex = 0;
+        }
+        questionTextView.setText(questions[questionIndex].getQuestion());
     }
 
     @Override
@@ -119,6 +107,8 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
         Log.d("SYSTEM INFO", "Метод onSaveInstanceState() запущен");
         savedInstanceState.putInt("question", questionIndex);
+        savedInstanceState.putInt("score", score);
+        savedInstanceState.putStringArray("answers", answers);
     }
 
     @Override
