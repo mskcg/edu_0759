@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="10dp"
     tools:context=".UserFormActivity">
 
     <TextView
-        android:id="@+id/AddUserTextView"
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/add_record"
+        android:text="Добавить/изменить запись"
         android:textSize="28sp" />
 
     <EditText
@@ -22,7 +23,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/name_hint" />
+        android:hint="Имя" />
 
     <EditText
         android:layout_marginTop="10dp"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="@string/last_name_hint" />
+        android:hint="Фамилия" />
 
     <EditText
         android:layout_marginTop="10dp"
@@ -39,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/phone_hint"
+        android:hint="Номер телефона"
         android:inputType="phone" />
 
     <Button
@@ -47,5 +48,6 @@
         android:id="@+id/insertUserBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_record" />
+        android:layout_margin="20dp"
+        android:text="Добавить запись" />
 </LinearLayout>

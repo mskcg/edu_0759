@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
-    ArrayList<User> userList = new ArrayList<>();  // элементы списка
-    UserAdapter userAdapter;
-    Button addUserBtn;
+    private RecyclerView recyclerView;
+    private ArrayList<User> userList = new ArrayList<>();  // элементы списка
+    private UserAdapter userAdapter;
+    private Button addUserBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,18 +56,29 @@ public class MainActivity extends AppCompatActivity {
         recyclerViewInit();
     }
 
-    private  class UserHolder extends RecyclerView.ViewHolder{      // UserHolder создаёт элемент списка
+    private  class UserHolder extends RecyclerView.ViewHolder implements View.OnClickListener{  // UserHolder создаёт элемент списка
         TextView itemTextView;
+        User user;
         public UserHolder(LayoutInflater inflater, ViewGroup viewGroup) {
             super(inflater.inflate(R.layout.single_item, viewGroup, false));
             // itemView - текущий layout single_item
             itemTextView = itemView.findViewById(R.id.itemTextView);
+            itemView.setOnClickListener(this);
         }
 
-        public void bind(String userString){
+        public void bind(String userString, User user){
             itemTextView.setText(userString);
+            this.user = user;
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
         }
     }
+
     private class UserAdapter extends RecyclerView.Adapter<UserHolder>{     // адаптер помещает элементы, созданные UserHolder, на экран
         ArrayList<User> users;
         public UserAdapter(ArrayList<User> users) {
@@ -83,20 +94,7 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(UserHolder userHolder, int position) { // RecyclerView вызывает этот медот, чтобы наполнить ViewHolder данными
             User user = users.get(position);
             String userString = user.getUserName()+"\n"+user.getUserLastName();
-            userHolder.bind(userString);
-
-            TextView itemTextView = userHolder.itemTextView;
-            itemTextView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, UserFormActivity.class);
-                    intent.putExtra("ReadOnly", true);    //
-                    intent.putExtra("UserName", user.getUserName());
-                    intent.putExtra("UserLastName", user.getUserLastName());
-                    intent.putExtra("Phone", user.getPhone());
-                    startActivity(intent);
-                }
-            });
+            userHolder.bind(userString, user);
         }
 
         @Override
