@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void yes_no_onClickActions(boolean yes) {
         answers[questionIndex] = getString(questions[questionIndex].getQuestion())+"? Ваш ответ: "+(yes?"Да":"Нет");
-        if(!questions[questionIndex].isAnswer()){
+        if(questions[questionIndex].isAnswer() == yes){
             Toast.makeText(MainActivity.this, R.string.correct, Toast.LENGTH_SHORT).show();
             score++;
         }else{
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("score", score);
             startActivity(intent);
             questionIndex = 0;
+            score = 0;
         }
         questionTextView.setText(questions[questionIndex].getQuestion());
     }
