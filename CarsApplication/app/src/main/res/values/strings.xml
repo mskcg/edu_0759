@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Cars Application</string>
+    <string name="add_car_btn">Добавить автомобиль</string>
+</resources>
