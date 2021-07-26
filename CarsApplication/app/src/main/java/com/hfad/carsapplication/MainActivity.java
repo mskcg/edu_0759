@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Car> carList = new ArrayList<>();  // элементы списка
     private CarAdapter carAdapter;
     private Button addCarBtn;
+
+    private Button filterBtn;
+    private EditText searchEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CarFormActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        searchEditText = findViewById(R.id.searchEditText);
+        filterBtn = findViewById(R.id.filterBtn);
+        filterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carAdapter.filter(searchEditText.getText().toString());
             }
         });
     }
@@ -85,10 +100,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private class CarAdapter extends RecyclerView.Adapter<CarHolder>{     // адаптер помещает элементы, созданные CarHolder, на экран
-        ArrayList<Car> cars;
+        private ArrayList<Car> cars;
+        private ArrayList<Car> carsCopy;
 
         public CarAdapter(ArrayList<Car> cars) {
-            this.cars = cars;
+            this.cars = new ArrayList<>();
+            this.cars.addAll(cars);
+            this.carsCopy = new ArrayList<>();
+            this.carsCopy.addAll(cars);
+        }
+
+        // фильтрация списка
+        public void filter(String text) {
+            cars.clear();
+            if(text.isEmpty()){
+                cars.addAll(carsCopy);
+            } else{
+                text = text.toLowerCase();
+                for(Car car: carsCopy){
+                    if(car.getNumber().toLowerCase().contains(text) || car.getModel().toLowerCase().contains(text)){
+                        cars.add(car);
+                    }
+                }
+            }
+            notifyDataSetChanged();
         }
 
         @Override
